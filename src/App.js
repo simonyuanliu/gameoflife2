@@ -10,9 +10,13 @@ export default class App extends Component {
     this.speed = 200;
     this.state = {
       generation:0,
-      gridArr: Array(this.rows).fill().map(()=>Array(this.cols).fill(false))
+      gridArr: this.grid()
     }
   }
+  grid = () => {
+    return Array(this.rows).fill().map(()=>Array(this.cols).fill(false));
+  }
+  
   arrayClone = (arr) => {
     return JSON.parse(JSON.stringify(arr));
   }
@@ -46,6 +50,7 @@ export default class App extends Component {
     clearInterval(this.intervalId);
   }
   play = () => {
+
     let grid = this.state.gridArr;
     let gridClone = this.arrayClone(this.state.gridArr);
     for (let i = 0; i < this.rows; i++) {
@@ -76,9 +81,10 @@ export default class App extends Component {
     this.speed -= 100;
     this.playButton();
   }
+  
   clear = () => {
     clearInterval(this.intervalId);
-    let grid = Array(this.rows).fill().map(()=>Array(this.cols).fill(false))
+    let grid = this.grid();
     this.setState({gridArr:grid})
     this.state.generation = 0;
 
