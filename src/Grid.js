@@ -17,6 +17,7 @@ export default class Grid extends Component {
             row = {i}
             col = {j}
             selectBox = {this.props.selectBox}
+            generation = {this.props.generation}
           />
         )
       }
